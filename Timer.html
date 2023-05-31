@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timer Example</title>
+    <style>
+      .container {
+        text-align: center;
+        margin-top: 100px;
+      }
+    </style>
+    <script>
+    
+    var count = 10;
+    var timer;
+
+    function startTimer() {
+    timer = setTimeout(function () {
+    count = count - 0.1;
+    document.getElementById("timer").textContent = count.toFixed(1);
+
+    if (count > 0) {
+    startTimer();
+    } 
+    else {
+    document.getElementById("timer").textContent = "0.0";
+    clearTimeout(timer);
+
+    setTimeout(function () {
+    // count = count + 0.1;
+    // document.getElementById("timer").textContent = count.toFixed(1);
+    startIncreasing();
+    }, 200);
+    }
+    }, 100);
+    }
+    
+function startIncreasing() {
+timer = setTimeout(function () {
+count = count + 0.1;
+document.getElementById("timer").textContent = count.toFixed(1);
+if (count < 10) {
+startIncreasing();
+ } else {
+ startTimer();
+ }
+ }, 100);
+    }
+
+window.onload = function () {
+startTimer();
+    };
+    </script>
+</body>
+</html>
+
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Timer</h1>
+      <h1><span id="timer">10.0</span></h1>
+    </div>
+  </body>
+</html>
